@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
+
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -63,78 +65,138 @@
     
   <style>
 
-body{
-    margin: 0px;
-    padding: 0px;
-}
-#back{
-  width: 100%;
-    height: 95vh;
-    background: url(../img/amb.png) top center;
-    background-size: cover;
-    position: relative;
-    margin-bottom: 33PX;
+      body{
+          margin: 0px;
+          padding: 0px;
+      }
+      #back{
+        width: 100%;
+          height: 95vh;
+          background: url(../img/amb.png) top center;
+          background-size: cover;
+          position: relative;
+          margin-bottom: 33PX;
 
-}
-.hadding{
-  color:  #082744;
-    padding: 2px;
-    margin: 5px;
-}
+      }
+      .hadding{
+        color:  #082744;
+          padding: 2px;
+          margin: 5px;
+      }
+      .hadding h1{
+        text-align: center;
+      }
 
-li {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-ul{
-  /* background-color: aliceblue; */
-  /* list-style-type: circle; */
-}
-a{
-    color: #082744;
-}
-#s{
-  overflow: scroll;
-  width: 100%;
-  height: 95vh;
-  background: url(assets/img/hh.jpg) top center;
-  
-  background-size: cover;
-  position: relative;
-  margin-bottom: 33PX;
-}
-.list{
-  display: grid;
-  grid-template-columns:repeat(auto-fit);
- 
-}
-.container{
-  display: grid;
-  
-  /* margin: 30px;
-  justify-items: center; */
+      li {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+      ul{
+        /* background-color: aliceblue; */
+        /* list-style-type: circle; */
+      }
+      a{
+          color: #082744;
+      }
+      .calculation{
+        /* overflow: scroll; */
+        width: 100%;
+        height: 95vh;
+        background-size: cover;
+        position: relative;
+        margin-bottom: 33PX;
+        background-color: azure;
+      }
+      .list{
+        display: grid;
+        grid-template-columns:repeat(auto-fit);
+      
+      }
+      .container{
+        display: grid;
+        
+        /* margin: 30px;
+        justify-items: center; */
 
-}
- .box{
-   /* opacity: 0.4; */
-   border: 3px solid #a1d4d3;
-   margin: 3px;
-   padding: 3px;
+      }
+      .box{
+        /* opacity: 0.4; */
+        /* border: 3px solid #a1d4d3; */
+        margin: 3px;
+        padding: 3px;
 
- }
- .box a{
-   padding-left: 30px;
-   font-size: 20px;
- }
- .box:hover{
-   opacity: 1;
- }
-
+      }
+      .box a{
+        padding-left: 30px;
+        font-size: 20px;
+      }
+      .box:hover{
+        opacity: 1;
+      }
+      .box span{
+          color: #b34545;
+          font-weight: bold;
+          font-size: 30px;
+          /* border: solid forestgreen 2px; */
+          /* margin-top: 5px; */
+          /* margin: 20px; */
+      }
+      .box p{
+          /* color: #b34545; */
+          /* font-weight: bold; */
+          font-size: 20px;
+          /* border: solid forestgreen 2px; */
+          /* margin-top: 5px;
+          margin: 20px; */
+      }
+      form{
+          text-align: center;
+      }
+      form button{
+          border-radius: 47px;
+          color: #d8ded8;
+          font-weight: bold;
+          background-color: #498421;
+          font-size: 20px;
+          border: solid #60c515;
+      }
 
   </style>
 </head>
 
 <body>
+              <?php
+               $errge= $errft= "";
+
+               if($_SERVER['REQUEST_METHOD']== 'POST'){
+                 if(empty($_POST['gender'])){
+                   $errge="please select gender";
+                 }
+                 else{
+                   $gender=$_POST['gender'];
+
+                 }
+                 if(empty($_POST['ft'])){
+                   $errft="please enter your height ";
+                 }
+                 else{
+                   $feet=$_POST['ft'];
+
+                 }
+                 if(empty($_POST['inc'])){
+                   $inch=0;
+                 }
+                 else{
+                   $inch=$_POST['inc'];
+
+                 }
+                 $feetin=$feet * 12;
+                 $totalinc=$feetin + $inch;
+                 $ibw=$totalinc * 2.54;
+
+                     
+               }
+             ?>
 
   <!-- ======= Top Bar ======= -->
   <div id="topbar" class="d-none d-lg-flex align-items-center fixed-top">
@@ -187,13 +249,14 @@ a{
           
           </li>
           <li><a href="sympt.html">symptoms</a></li>
+          <!-- <li><a href="#">Calculator</a></li> -->
           <li class="drop-down"><a>Calculator</a>
             <ul>
-              <li><a href="calculator.php#ibw"><span style="color: #b34545; font-weight: bold; margin-right: 5px; font-size: 20px;">IBW </span>Ideal Body Weight (IBW)</a></li>
-              <li><a href="calculator.php#bmi"><span style="color: #b34545; font-weight: bold; margin-right: 5px; font-size: 20px;">BMI </span> Body Mass Index (BMI)</a></li>
+              <li><a href="#ibw"><span style="color: #b34545; font-weight: bold; margin-right: 5px; font-size: 20px;">IBW </span>Ideal Body Weight (IBW)</a></li>
+              <li><a href="#bmi"><span style="color: #b34545; font-weight: bold; margin-right: 5px; font-size: 20px;">BMI </span> Body Mass Index (BMI)</a></li>
             </ul>
           
-          </li>i>
+          </li>
           
           <li><a href="#contact">Contact</a></li>
         </ul>
@@ -206,27 +269,81 @@ a{
   </header><br><br><br><br>
   <!-- End Header -->
   
+   <?php $errge= $errft= ""; ?>
+   
 
-
-  <section id="s" class="appointment section-b">
+  <section id="ibw" class="calculation">
     <div class="container">
         <div class="hadding">
-          
-            <!-- <h1><b> Select your problem and match your symptoms , related doctor list are here  </b></h1> -->
-            <h1><b> Select the body part of your problem. </b></h1>
+            <h1> Ideal Body Weight (IBW)| Calculation</h1>
             <br><br>
+            <form action="calculator.php" method="POST">
+                <label> Select Your Gender : </label> 
+                <?php echo $errge;?>
+                <br><br>
+                <input type="radio" name="gender" value="Male">
+                <label>Male</label>
+                <input type="radio" name="gender" value="Female">
+                <label>Female</label><br><br>
+
+                <label> Enter Your Height : </label> <br><br>
+                <label>Feet : </label>
+                <?php echo $errft ;?>
+                <input type="text" name="ft" placeholder="feet"><br><br>
+                <label>Inch : </label>
+                <input type="text" name="inc" placeholder="Inch"><br><br>
+                <button type="submit">Calculate</button>
+            </form>
+            <div class="result">
+               
+            </div>
+           
+                <?php
+                  if($gender == "Male"){
+                    $ibw=$ibw-100;
+                    echo '<div class="result">
+                    <h3>Ideal Body Weight (IBW) : '.$ibw.' kg</h3>
+                    </div>';
+                  }
+                  if($gender == 'Female'){
+                    $ibw=$ibw-105;
+                    echo '<div class="result">
+                    <h3>Ideal Body Weight (IBW) : '.$ibw.' kg </h3> 
+                    </div>';
+                  }
+                ?>
         </div>
-        <div class="list">
-          <div class="box"><a href="#">Head</a></div>
-          <div class="box"><a href="#">Eye</a></div>
-          <div class="box"><a href="#">Tooth</a></div>
-          <div class="box"><a href="#">Ear/Nose/Throat</a></div>
-          <div class="box"><a href="#">Skin</a></div>
-          <div class="box"><a href="#">Chest</a></div>
-          <div class="box"><a href="#">Stomach</a></div>
-          <div class="box"><a href="#">Hand /leg</a></div>
-          
+        
+    </div>
+    
+</section>
+
+<section id="bmi" class="calculation">
+    <div class="container">
+        <div class="hadding">
+            <h1> Body Mass Index (BMI)</h1>
+            <br><br>
+            <form action="">
+              <label> Select Your Gender : </label><br><br>
+              <input type="radio" name="gender" value="Male">
+              <label>Male</label>
+              <input type="radio" name="gender" value="Female">
+              <label>Female</label><br><br>
+
+              <label> Enter Your Height : </label><br><br>
+              <label>Feet : </label>
+              <input type="text" name="ft" placeholder="feet"><br><br>
+              <label>Inch : </label>
+              <input type="text" name="inc" placeholder="Inch"><br><br>
+              <label>Enter Your Weight (Kg):  </label> <br><br>
+              <input type="text" name="wt" placeholder="Weight"><br><br>
+              <button type="submit">Calculate</button>
+          </form>
+          <div class="result">
+              <h3>Ideal Body Weight (IBW)</h3>
+          </div>
         </div>
+        
     </div>
 </section>
 
@@ -260,51 +377,16 @@ a{
             </ul>
           </div>
 
-          <!-- <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Our Services</h4>
-            <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
-            </ul>
-          </div> -->
-
-          <!-- <div class="col-lg-4 col-md-6 footer-newsletter">
-            <h4>Join Our Newsletter</h4>
-            <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
-            <form action="" method="post">
-              <input type="email" name="email"><input type="submit" value="Subscribe">
-            </form>
-          </div> -->
+       
 
         </div>
       </div>
     </div>
 
-    <!-- <div class="container d-md-flex py-4">
-
-      <div class="mr-md-auto text-center text-md-left">
-        <div class="copyright"> -->
+   
           &copy; Copyright <strong><span>Medilab</span></strong>. All Rights Reserved
         </div>
-        <!-- <div class="credits"> -->
-          <!-- All the links in the footer should remain intact. -->
-          <!-- You can delete the links only if you purchased the pro version. -->
-          <!-- Licensing information: https://bootstrapmade.com/license/ -->
-          <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/medilab-free-medical-bootstrap-theme/ -->
-          <!-- Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-        </div> -->
-      <!-- </div> -->
-      <!-- <div class="social-links text-center text-md-right pt-3 pt-md-0">
-        <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-        <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-        <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-        <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-        <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-      </div> -->
-    <!-- </div> -->
+        
   </footer><!-- End Footer -->
 
   <div id="preloader"></div>
